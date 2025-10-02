@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paan Palace - Our Premium Paan Collection</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ===== Global Styles ===== */
+    :root {
+      --primary: #e63946;
+      --secondary: #c1121f;
+      --accent: #f4a261;
+      --light: #f8f9fa;
+      --dark: #212529;
+      --text: #333;
+      --bg-light: #fff5f7;
+      --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--text);
+      line-height: 1.6;
+      background-color: var(--bg-light);
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: var(--transition);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 14px;
+    }
+
+    .btn:hover {
+      background: var(--secondary);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+    }
+
+    .section-title {
+      text-align: center;
+      margin: 40px 0;
+      position: relative;
+      color: var(--primary);
+      font-size: 2.5rem;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: var(--accent);
+    }
+
+    /* ===== Header ===== */
+    .header {
+      background: white;
+      box-shadow: var(--shadow);
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 15px 0;
+      transition: var(--transition);
+    }
+
+    .header.scrolled {
+      padding: 10px 0;
+      background: rgba(255, 255, 255, 0.98);
+    }
+
+    .header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+    }
+
+    .logo i {
+      margin-right: 10px;
+      font-size: 24px;
+    }
+
+    .main-nav {
+      display: flex;
+    }
+
+    .main-nav li {
+      margin-left: 30px;
+      position: relative;
+    }
+
+    .main-nav a {
+      font-weight: 500;
+      font-size: 16px;
+      padding: 5px 0;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .main-nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: var(--transition);
+    }
+
+    .main-nav a:hover::after {
+      width: 100%;
+    }
+
+    .main-nav a:hover {
+      color: var(--primary);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: var(--primary);
+      cursor: pointer;
+    }
+
+    /* ===== Gallery Section ===== */
+    .gallery {
+      padding: 120px 0 80px;
+      background: white;
+    }
+
+    .gallery .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .gallery .box {
+      position: relative;
+      overflow: hidden;
+      border-radius: 15px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      transition: var(--transition);
+      height: 380px;
+    }
+
+    .gallery .box:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .gallery .box .image {
+      height: 100%;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .gallery .box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery .box:hover img {
+      transform: scale(1.1);
+    }
+
+    .paanName {
+      position: absolute;
+      bottom: 70px;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+      color: white;
+      padding: 20px;
+      font-size: 1.5rem;
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      transform: translateY(100%);
+      transition: var(--transition);
+    }
+
+    .gallery .box:hover .paanName {
+      transform: translateY(0);
+    }
+
+    .show-more-btn {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 10px 25px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: var(--transition);
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .gallery .box:hover .show-more-btn {
+      opacity: 1;
+      visibility: visible;
+      bottom: 30px;
+    }
+
+    .show-more-btn:hover {
+      background: var(--secondary);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    /* ===== Responsive Design ===== */
+    @media (max-width: 992px) {
+      .section-title {
+        font-size: 2.2rem;
+      }
+      
+      .gallery .container {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      }
+    }
+
+    @media (max-width: 768px) {
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      .main-nav {
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        width: 80%;
+        height: calc(100vh - 80px);
+        background: white;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding-top: 30px;
+        transition: var(--transition);
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .main-nav.active {
+        left: 0;
+      }
+
+      .main-nav li {
+        margin: 15px 0;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .gallery {
+        padding: 100px 0 60px;
+      }
+      
+      .gallery .container {
+        gap: 20px;
+      }
+      
+      .gallery .box {
+        height: 320px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .logo {
+        font-size: 22px;
+      }
+
+      .section-title {
+        font-size: 1.8rem;
+      }
+      
+      .gallery .container {
+        grid-template-columns: 1fr;
+      }
+      
+      .gallery .box {
+        height: 280px;
+      }
+      
+      .paanName {
+        font-size: 1.3rem;
+        bottom: 60px;
+      }
+    }
+
+    /* ===== Animations ===== */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in {
+      animation: fadeIn 0.8s ease forwards;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="container">
+      <a href="#" class="logo"><i class="fas fa-leaf"></i>Paan Palace</a>
+      
+      <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <ul class="main-nav" id="mainNav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="AboutUs.html">About Us</a></li>
+        <li><a href="login.html">Log In</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Gallery Section -->
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <h2 class="section-title fade-in">Our Premium Paan Collection</h2>
+      
+      <div class="box fade-in">
+        <div class="image">
+          <img src="../Pictures/Kivi .jpg" alt="Kivi Paan">
+          <div class="paanName">Kiwi Paan</div>
+          <a href="./ProductInfo/KiwiInfo.html"><button class="show-more-btn">Show info</button></a>
+        </div>
+      </div>
+      
+      <div class="box fade-in">
+        <div class="image">
+          <img src="../Pictures/Blue Blerry.jpg" alt="BlueBerry Paan">
+          <div class="paanName">Blueberry Paan</div>
+          <a href="./ProductInfo/BlueBerryInfo.html"><button class="show-more-btn">Show Info</button></a>
+        </div>
+      </div>
+      
+      <div class="box fade-in">
+        <div class="image">
+          <img src="../Pictures/Dry fruit cocktail.jpg" alt="Dry Fruit Cocktail Paan">
+          <div class="paanName">Dry Fruit Cocktail</div>
+          <a href="./ProductInfo/DryFruitInfo.html"><button class="show-more-btn">Show Info</button></a>
+        </div>
+      </div>
+      
+      <div class="box fade-in">
+        <div class="image">
+          <img src="../Pictures/Sitafal Paan.jpg" alt="Sitafal Paan">
+          <div class="paanName">Sitafal Paan</div>
+          <a href="./ProductInfo/SitafalInfo.html"><button class="show-more-btn">Show Info</button></a>
+        </div>
+      </div>
+      
+      <div class="box fade-in">
+        <div class="image">
+          <img src="../Pictures/Khajur Paan.jpg" alt="Khajur Paan">
+          <div class="paanName">Khajur Paan</div>
+          <a href="./ProductInfo/KhajurInfo.html"><button class="show-more-btn">Show Info</button></a>
+        </div>
+      </div>
+      
+      <div class="box fade-in">
+        <div class="image">
+          <img src="../Pictures/Sadha Masala.jpg" alt="Sadha Masala Paan">
+          <div class="paanName">Sadha Masala Paan</div>
+          <a href="./ProductInfo/SadhaMasalaInfo.html"><button class="show-more-btn">Show Info</button></a>
+        </div>
+      </div>
+      
+      <div class="box fade-in">
+        <div class="image">
+          <img src="../Pictures/Polo Paan .jpg" alt="Polo Paan">
+          <div class="paanName">Polo Paan</div>
+          <a href="./ProductInfo/PoloInfo.html"><button class="show-more-btn">Show Info</button></a>
+        </div>
+      </div>
+      
+      <div class="box fade-in">
+        <div class="image">
+          <img src="../Pictures/Peru Paan.jpg" alt="Peru Paan">
+          <div class="paanName">Peru Paan</div>
+          <a href="./ProductInfo/PeruInfo.html"><button class="show-more-btn">Show Info</button></a>
+        </div>
+      </div>
+      
+      <div class="box fade-in">
+        <div class="image">
+          <img src="../Pictures/Love Birds Paan.jpg" alt="Love Birds Paan">
+          <div class="paanName">Love Birds Paan</div>
+          <a href="./ProductInfo/LoveBirdsInfo.html"><button class="show-more-btn">Show Info</button></a>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <script>
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mainNav = document.getElementById('mainNav');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+      mainNav.classList.toggle('active');
+      mobileMenuBtn.innerHTML = mainNav.classList.contains('active') ? 
+        '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+    });
+    
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('#mainNav a').forEach(link => {
+      link.addEventListener('click', () => {
+        mainNav.classList.remove('active');
+        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+      });
+    });
+    
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        document.getElementById('header').classList.add('scrolled');
+      } else {
+        document.getElementById('header').classList.remove('scrolled');
+      }
+    });
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+    
+    // Animation on scroll
+    const fadeElements = document.querySelectorAll('.fade-in');
+    
+    const fadeInOnScroll = () => {
+      fadeElements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        
+        if (elementTop < windowHeight - 100) {
+          element.style.opacity = '1';
+          element.style.transform = 'translateY(0)';
+        }
+      });
+    };
+    
+    // Initialize elements as invisible
+    fadeElements.forEach(element => {
+      element.style.opacity = '0';
+      element.style.transform = 'translateY(20px)';
+      element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    });
+    
+    window.addEventListener('scroll', fadeInOnScroll);
+    window.addEventListener('load', fadeInOnScroll);
+    
+    // Preload images for better performance
+    const images = [
+      '../Pictures/Kivi .jpg',
+      '../Pictures/Blue Blerry.jpg',
+      '../Pictures/Dry fruit cocktail.jpg',
+      '../Pictures/Sitafal Paan.jpg',
+      '../Pictures/Khajur Paan.jpg',
+      '../Pictures/Sadha Masala.jpg',
+      '../Pictures/Polo Paan .jpg',
+      '../Pictures/Peru Paan.jpg',
+      '../Pictures/Love Birds Paan.jpg'
+    ];
+    
+    images.forEach(imageSrc => {
+      const img = new Image();
+      img.src = imageSrc;
+    });
+
+    // Add click effect to show-more buttons
+    document.querySelectorAll('.show-more-btn').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        this.classList.add('clicked');
+        setTimeout(() => {
+          this.classList.remove('clicked');
+        }, 300);
+      });
+    });
+  </script>
+</body>
+</html>

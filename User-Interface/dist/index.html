@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- All your existing head content remains the same -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paan Palace - Authentic Indian Paan</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Add these new styles to your existing CSS */
+    :root {
+      --primary: #e63946;
+      --secondary: #c1121f;
+      --accent: #f4a261;
+      --light: #f8f9fa;
+      --dark: #212529;
+      --text: #333;
+      --bg-light: #fff5f7;
+      --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--text);
+      line-height: 1.6;
+      background-color: var(--bg-light);
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: var(--transition);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 14px;
+    }
+
+    .btn:hover {
+      background: var(--secondary);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+      position: relative;
+      color: var(--primary);
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: var(--accent);
+    }
+
+    /* ===== Header ===== */
+    .header {
+      background: white;
+      box-shadow: var(--shadow);
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 15px 0;
+      transition: var(--transition);
+    }
+
+    .header.scrolled {
+      padding: 10px 0;
+      background: rgba(255, 255, 255, 0.95);
+    }
+
+    .header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+    }
+
+    .logo i {
+      margin-right: 10px;
+      font-size: 24px;
+    }
+
+    .main-nav {
+      display: flex;
+    }
+
+    .main-nav li {
+      margin-left: 30px;
+      position: relative;
+    }
+
+    .main-nav a {
+      font-weight: 500;
+      font-size: 16px;
+      padding: 5px 0;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .main-nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: var(--transition);
+    }
+
+    .main-nav a:hover::after {
+      width: 100%;
+    }
+
+    .main-nav a:hover {
+      color: var(--primary);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: var(--primary);
+      cursor: pointer;
+    }
+
+    /* ===== Landing Section ===== */
+    .landing {
+      height: 100vh;
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../Pictures/WhatsApp\ Image\ 2025-03-26\ at\ 22.42.34_218c2343.jpg') center/cover no-repeat;
+      color: white;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      padding-top: 80px;
+    }
+
+    .landing .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+    }
+
+    .landing .text {
+      max-width: 800px;
+      margin-bottom: 30px;
+    }
+
+    .landing h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    .landing h2 {
+      font-size: 1.8rem;
+      font-weight: 300;
+      margin-bottom: 30px;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    }
+
+    .go-down {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      font-size: 30px;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0) translateX(-50%);
+      }
+      40% {
+        transform: translateY(-20px) translateX(-50%);
+      }
+      60% {
+        transform: translateY(-10px) translateX(-50%);
+      }
+    }
+    .footer {
+      background: var(--dark);
+      color: white;
+      padding: 70px 0 0;
+    }
+
+    .footer .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .footer h3 {
+      color: white;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .footer h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background: var(--primary);
+    }
+
+    .footer .text {
+      margin: 15px 0;
+      line-height: 1.8;
+    }
+
+    .social {
+      display: flex;
+      margin: 20px 0;
+    }
+
+    .social li {
+      margin-right: 15px;
+    }
+
+    .social a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      transition: var(--transition);
+    }
+
+    .social a:hover {
+      background: var(--primary);
+      transform: translateY(-5px);
+    }
+
+    .footer .line {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .footer .line i {
+      margin-right: 15px;
+      color: var(--primary);
+      font-size: 20px;
+      width: 25px;
+      text-align: center;
+    }
+
+    .footer-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+      gap: 10px;
+    }
+
+    .footer-gallery img {
+      border-radius: 5px;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .footer-gallery img:hover {
+      transform: scale(1.1);
+    }
+
+    .copyright {
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 50px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* ===== Responsive Design ===== */
+    @media (max-width: 992px) {
+      .landing h1 {
+        font-size: 2.8rem;
+      }
+      
+      .landing h2 {
+        font-size: 1.5rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      .main-nav {
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        width: 80%;
+        height: calc(100vh - 80px);
+        background: white;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding-top: 30px;
+        transition: var(--transition);
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .main-nav.active {
+        left: 0;
+      }
+
+      .main-nav li {
+        margin: 15px 0;
+      }
+
+      .landing h1 {
+        font-size: 2.2rem;
+      }
+      
+      .landing h2 {
+        font-size: 1.2rem;
+      }
+
+      .gallery .container {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 15px;
+      }
+      
+      .gallery .box {
+        height: 300px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .logo {
+        font-size: 22px;
+      }
+
+      .landing h1 {
+        font-size: 1.8rem;
+      }
+      
+      .landing h2 {
+        font-size: 1rem;
+      }
+
+      .gallery .container {
+        grid-template-columns: 1fr;
+      }
+      
+      .gallery .box {
+        height: 250px;
+      }
+    }
+
+    /* ===== Animations ===== */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in {
+      animation: fadeIn 1s ease forwards;
+    }
+    /* Profile Dropdown Styles */
+    .profile-container {
+      position: relative;
+      display: flex;
+      align-items: center;
+      margin-left: 20px;
+    }
+    
+    .profile-btn {
+      display: flex;
+      align-items: center;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--dark);
+      font-weight: 500;
+    }
+    
+    .profile-pic {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 8px;
+      border: 2px solid var(--primary);
+    }
+    
+    .profile-dropdown {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: white;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      padding: 15px;
+      min-width: 200px;
+      z-index: 1000;
+      display: none;
+      margin-top: 10px;
+    }
+    
+    .profile-dropdown.active {
+      display: block;
+      animation: fadeIn 0.3s ease forwards;
+    }
+    
+    .profile-dropdown .user-info {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+    
+    .profile-dropdown .user-info img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+    
+    .profile-dropdown .user-name {
+      font-weight: 600;
+      margin-bottom: 3px;
+    }
+    
+    .profile-dropdown .user-email {
+      font-size: 12px;
+      color: #666;
+    }
+    
+    .profile-dropdown ul {
+      margin: 0;
+      padding: 0;
+    }
+    
+    .profile-dropdown li {
+      margin-bottom: 8px;
+    }
+    
+    .profile-dropdown a {
+      display: block;
+      padding: 5px 0;
+      transition: var(--transition);
+    }
+    
+    .profile-dropdown a:hover {
+      color: var(--primary);
+    }
+    
+    .profile-dropdown .logout-btn {
+      color: var(--secondary);
+      font-weight: 500;
+    }
+    
+    /* Adjust header for logged in state */
+    .logged-in .login-btn {
+      display: none;
+    }
+    
+    .logged-out .profile-container {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Modify your header section like this -->
+  <header class="header" id="header">
+    <div class="container">
+      <a href="#" class="logo"><i class="fas fa-leaf"></i>Paan Palace</a>
+      
+      <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <ul class="main-nav" id="mainNav">
+        <li><a href="products.html">Our Products</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li class="logged-out"><a href="login.html">Login</a></li>
+       <!--<li><a href="feedback.html">Feedback</a></li>---> 
+        <li><a href="AboutUs.html">About us</a></li>
+        <li><a href="#logout">Logout</a></li>
+      </ul>
+      
+      <!-- Add this profile container -->
+      <div class="profile-container logged-in" id="profileContainer">
+        <button class="profile-btn" id="profileBtn">
+          <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Profile" class="profile-pic" id="profilePic">
+          <span id="usernameShort">JS</span>
+        </button>
+        <div class="profile-dropdown" id="profileDropdown">
+          <div class="user-info">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Profile" id="dropdownProfilePic">
+            <div>
+              <div class="user-name" id="username">John Smith</div>
+              <div class="user-email" id="useremail">john@example.com</div>
+            </div>
+          </div>
+          <ul>
+            <li><a href="profile.html"><i class="fas fa-user-circle"></i> My Profile</a></li>
+            <li><a href="orders.html"><i class="fas fa-shopping-bag"></i> My Orders</a></li>
+            <li><a href="wishlist.html"><i class="fas fa-heart"></i> Wishlist</a></li>
+            <li><a href="#" class="logout-btn" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- All your other sections remain exactly the same -->
+  <!-- Landing Section remains exactly the same -->
+  <section class="landing" id="home">
+    <div class="container">
+      <div class="text fade-in">
+        <h1>Paan That Speaks to Your Soul</h1>
+        <h2>An experience beyond taste</h2>
+        <a href="#features" class="btn">Discover Our Paan</a>
+      </div>
+      <a href="#features" class="go-down">
+        <i class="fas fa-angle-double-down"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- Features Section (replaces gallery) -->
+  <section class="features" id="features" style="padding: 100px 0; background: white;">
+    <div class="container">
+      <h2 class="section-title">Why Choose Paan Palace?</h2>
+      
+      <div class="features-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+        <div class="feature-box fade-in" style="text-align: center; padding: 30px; border-radius: 15px; background: var(--bg-light); transition: var(--transition);">
+          <div style="width: 80px; height: 80px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; color: white; font-size: 30px;">
+            <i class="fas fa-leaf"></i>
+          </div>
+          <h3 style="margin-bottom: 15px; color: var(--primary);">Fresh Ingredients</h3>
+          <p>We use only the freshest betel leaves and premium ingredients sourced directly from trusted suppliers across India.</p>
+        </div>
+        
+        <div class="feature-box fade-in" style="text-align: center; padding: 30px; border-radius: 15px; background: var(--bg-light); transition: var(--transition);">
+          <div style="width: 80px; height: 80px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; color: white; font-size: 30px;">
+            <i class="fas fa-award"></i>
+          </div>
+          <h3 style="margin-bottom: 15px; color: var(--primary);">Traditional Expertise</h3>
+          <p>Our paan makers have decades of experience crafting authentic paan using traditional techniques with modern hygiene standards.</p>
+        </div>
+        
+        <div class="feature-box fade-in" style="text-align: center; padding: 30px; border-radius: 15px; background: var(--bg-light); transition: var(--transition);">
+          <div style="width: 80px; height: 80px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; color: white; font-size: 30px;">
+            <i class="fas fa-bolt"></i>
+          </div>
+          <h3 style="margin-bottom: 15px; color: var(--primary);">Quick Service</h3>
+          <p>Order online and get your favorite paan prepared fresh and delivered quickly to your doorstep or ready for pickup.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bestsellers Section -->
+  <section class="bestsellers" id="bestsellers" style="padding: 80px 0; background: var(--bg-light);">
+    <div class="container">
+      <h2 class="section-title">Our Bestselling Paan</h2>
+      
+      <div class="bestsellers-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px;">
+        <div class="bestseller-box fade-in" style="background: white; border-radius: 15px; overflow: hidden; box-shadow: var(--shadow); transition: var(--transition);">
+          <div style="height: 200px; overflow: hidden;">
+            <img src="../Pictures/Kivi .jpg" alt="Kivi Paan" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+          </div>
+          <div style="padding: 20px; text-align: center;">
+            <h3 style="margin-bottom: 10px; color: var(--primary);">Kivi Paan</h3>
+            <p style="margin-bottom: 15px; font-size: 14px;">A refreshing combination of kiwi fruit with traditional paan ingredients.</p>
+            <a href="./ProductInfo/KiwiInfo.html" class="btn" style="padding: 8px 20px; font-size: 13px;">View Details</a>
+          </div>
+        </div>
+        
+        <div class="bestseller-box fade-in" style="background: white; border-radius: 15px; overflow: hidden; box-shadow: var(--shadow); transition: var(--transition);">
+          <div style="height: 200px; overflow: hidden;">
+            <img src="../Pictures/Blue Blerry.jpg" alt="Blueberry Paan" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+          </div>
+          <div style="padding: 20px; text-align: center;">
+            <h3 style="margin-bottom: 10px; color: var(--primary);">Blueberry Paan</h3>
+            <p style="margin-bottom: 15px; font-size: 14px;">Antioxidant-rich blueberries meet the classic paan taste.</p>
+            <a href="./ProductInfo/BlueBerryInfo.html" class="btn" style="padding: 8px 20px; font-size: 13px;">View Details</a>
+          </div>
+        </div>
+        
+        <div class="bestseller-box fade-in" style="background: white; border-radius: 15px; overflow: hidden; box-shadow: var(--shadow); transition: var(--transition);">
+          <div style="height: 200px; overflow: hidden;">
+            <img src="../Pictures/Dry fruit cocktail.jpg" alt="Dry Fruit Cocktail Paan" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+          </div>
+          <div style="padding: 20px; text-align: center;">
+            <h3 style="margin-bottom: 10px; color: var(--primary);">Dry Fruit Cocktail</h3>
+            <p style="margin-bottom: 15px; font-size: 14px;">A luxurious blend of premium dry fruits with paan.</p>
+            <a href="./ProductInfo/DryFruitInfo.html" class="btn" style="padding: 8px 20px; font-size: 13px;">View Details</a>
+          </div>
+        </div>
+        
+        <div class="bestseller-box fade-in" style="background: white; border-radius: 15px; overflow: hidden; box-shadow: var(--shadow); transition: var(--transition);">
+          <div style="height: 200px; overflow: hidden;">
+            <img src="../Pictures/Sitafal Paan.jpg" alt="Sitafal Paan" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+          </div>
+          <div style="padding: 20px; text-align: center;">
+            <h3 style="margin-bottom: 10px; color: var(--primary);">Sitafal Paan</h3>
+            <p style="margin-bottom: 15px; font-size: 14px;">Creamy custard apple adds a unique twist to traditional paan.</p>
+            <a href="./ProductInfo/SitafalInfo.html" class="btn" style="padding: 8px 20px; font-size: 13px;">View Details</a>
+          </div>
+        </div>
+      </div>
+      
+      <div style="text-align: center; margin-top: 40px;">
+        <a href="products.html" class="btn">View All Products</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials" id="testimonials" style="padding: 80px 0; background: white;">
+    <div class="container">
+      <h2 class="section-title">What Our Customers Say</h2>
+      
+      <div class="testimonials-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+        <div class="testimonial-box fade-in" style="background: var(--bg-light); padding: 30px; border-radius: 15px; position: relative;">
+          <div style="display: flex; align-items: center; margin-bottom: 15px;">
+            <div style="width: 50px; height: 50px; border-radius: 50%; overflow: hidden; margin-right: 15px;">
+              <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Customer" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div>
+              <h4 style="margin-bottom: 5px;">Rahul Sharma</h4>
+              <div style="color: var(--accent);">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+            </div>
+          </div>
+          <p>"The Kivi Paan is my absolute favorite! Perfect balance of sweet and refreshing. Paan Palace has become my regular stop after dinner."</p>
+        </div>
+        
+        <div class="testimonial-box fade-in" style="background: var(--bg-light); padding: 30px; border-radius: 15px; position: relative;">
+          <div style="display: flex; align-items: center; margin-bottom: 15px;">
+            <div style="width: 50px; height: 50px; border-radius: 50%; overflow: hidden; margin-right: 15px;">
+              <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Customer" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div>
+              <h4 style="margin-bottom: 5px;">Priya Patel</h4>
+              <div style="color: var(--accent);">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+              </div>
+            </div>
+          </div>
+          <p>"I was skeptical about fusion paan, but their Blueberry Paan changed my mind. The quality is consistently excellent!"</p>
+        </div>
+        
+        <div class="testimonial-box fade-in" style="background: var(--bg-light); padding: 30px; border-radius: 15px; position: relative;">
+          <div style="display: flex; align-items: center; margin-bottom: 15px;">
+            <div style="width: 50px; height: 50px; border-radius: 50%; overflow: hidden; margin-right: 15px;">
+              <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Customer" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div>
+              <h4 style="margin-bottom: 5px;">Vikram Joshi</h4>
+              <div style="color: var(--accent);">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+            </div>
+          </div>
+          <p>"The Dry Fruit Cocktail Paan is worth every rupee. Perfect for special occasions. Their hygiene standards are impressive too."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer remains exactly the same -->
+  <footer class="footer" id="contact">
+    <div class="container">
+      <div class="box">
+        <h3>About Us</h3>
+        <p class="text">
+          A burst of flavor in every paan, crafted to perfection just for you! We bring you the authentic taste of India's beloved paan tradition with modern twists.
+        </p>
+        <ul class="social">
+          <li>
+            <a href="#" class="facebook">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="twitter">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="youtube">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+      
+      <div class="box">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#bestsellers">Bestsellers</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="feedback.html">Feedback</a></li>
+        </ul>
+      </div>
+      
+      <div class="box">
+        <h3>Contact Info</h3>
+        <div class="line">
+          <i class="fas fa-map-marker-alt"></i>
+          <div>RajaBal, Kolhapur, Maharashtra</div>
+        </div>
+        <div class="line">
+          <i class="far fa-clock"></i>
+          <div>Business Hours: 10:00 AM - 8:00 PM</div>
+        </div>
+        <div class="line">
+          <i class="fas fa-phone-alt"></i>
+          <div>+91 9876543210</div>
+        </div>
+        <div class="line">
+          <i class="fas fa-envelope"></i>
+          <div>info@paanpalace.com</div>
+        </div>
+      </div>
+      
+      <div class="box footer-gallery">
+        <h3>Paan Gallery</h3>
+        <img src="../Pictures/Kivi .jpg" alt="Paan 1">
+        <img src="../Pictures/Blue Blerry.jpg" alt="Paan 2">
+        <img src="../Pictures/Dry fruit cocktail.jpg" alt="Paan 3">
+        <img src="../Pictures/Sitafal Paan.jpg" alt="Paan 4">
+        <img src="../Pictures/Khajur Paan.jpg" alt="Paan 5">
+        <img src="../Pictures/Sadha Masala.jpg" alt="Paan 6">
+      </div>
+    </div>
+    
+    <p class="copyright">Made With <i class="fas fa-heart" style="color: var(--primary);"></i> By Paan Palace &copy; 2023</p>
+  </footer>
+
+  <!-- Add this script at the bottom of your existing JavaScript -->
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script>
+    // Existing code remains unchanged
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mainNav = document.getElementById('mainNav');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+      mainNav.classList.toggle('active');
+      mobileMenuBtn.innerHTML = mainNav.classList.contains('active') ? 
+        '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+    });
+    
+    document.querySelectorAll('#mainNav a').forEach(link => {
+      link.addEventListener('click', () => {
+        mainNav.classList.remove('active');
+        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+      });
+    });
+    
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        document.getElementById('header').classList.add('scrolled');
+      } else {
+        document.getElementById('header').classList.remove('scrolled');
+      }
+    });
+    
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+    
+    const fadeElements = document.querySelectorAll('.fade-in');
+    
+    const fadeInOnScroll = () => {
+      fadeElements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        
+        if (elementTop < windowHeight - 100) {
+          element.style.opacity = '1';
+          element.style.transform = 'translateY(0)';
+        }
+      });
+    };
+    
+    fadeElements.forEach(element => {
+      element.style.opacity = '0';
+      element.style.transform = 'translateY(20px)';
+      element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    });
+    
+    window.addEventListener('scroll', fadeInOnScroll);
+    window.addEventListener('load', fadeInOnScroll);
+    
+    const images = [
+      '../Pictures/Kivi .jpg',
+      '../Pictures/Blue Blerry.jpg',
+      '../Pictures/Dry fruit cocktail.jpg',
+      '../Pictures/Sitafal Paan.jpg',
+      '../Pictures/Khajur Paan.jpg',
+      '../Pictures/Sadha Masala.jpg',
+      '../Pictures/Polo Paan .jpg',
+      '../Pictures/Peru Paan.jpg',
+      '../Pictures/Love Birds Paan.jpg'
+    ];
+    
+    images.forEach(imageSrc => {
+      const img = new Image();
+      img.src = imageSrc;
+    });
+
+    // New logout functionality
+    document.querySelector('a[href="#logout"]').addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        // Show confirmation message
+        if (confirm('Are you sure you want to log out?')) {
+            // Remove JWT token from localStorage
+            localStorage.removeItem('jwtToken');
+            
+            // Show logout success message
+            alert('You have been successfully logged out!');
+            
+            // Redirect to home page
+            window.location.href = 'index.html';
+        }
+    });
+
+    // Keep your existing functions below unchanged
+    function checkLoginStatus() {
+      const isLoggedIn = localStorage.getItem('paanPalaceLoggedIn') === 'true';
+      const userData = JSON.parse(localStorage.getItem('paanPalaceUser')) || {
+        name: 'John Smith',
+        email: 'john@example.com',
+        shortName: 'JS'
+      };
+      
+      if (isLoggedIn) {
+        document.body.classList.add('logged-in');
+        document.body.classList.remove('logged-out');
+        
+        document.getElementById('username').textContent = userData.name;
+        document.getElementById('useremail').textContent = userData.email;
+        document.getElementById('usernameShort').textContent = userData.shortName;
+      } else {
+        document.body.classList.add('logged-out');
+        document.body.classList.remove('logged-in');
+      }
+    }
+    
+    document.getElementById('profileBtn').addEventListener('click', function(e) {
+      e.stopPropagation();
+      document.getElementById('profileDropdown').classList.toggle('active');
+    });
+    
+    document.addEventListener('click', function(e) {
+      const dropdown = document.getElementById('profileDropdown');
+      if (dropdown.classList.contains('active') && !e.target.closest('.profile-container')) {
+        dropdown.classList.remove('active');
+      }
+    });
+    
+    window.addEventListener('DOMContentLoaded', checkLoginStatus);
+    
+    function simulateLogin() {
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.has('login') && urlParams.get('login') === 'success') {
+        const userData = {
+          name: 'Rahul Sharma',
+          email: 'rahul@example.com',
+          shortName: 'RS'
+        };
+        localStorage.setItem('paanPalaceLoggedIn', 'true');
+        localStorage.setItem('paanPalaceUser', JSON.stringify(userData));
+        checkLoginStatus();
+        
+        window.history.replaceState({}, document.title, window.location.pathname);
+      }
+    }
+    
+    simulateLogin();
+</script>
+</body>
+</html>
