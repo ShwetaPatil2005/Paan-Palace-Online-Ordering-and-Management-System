@@ -1,4 +1,3 @@
-$readme = @"
 # Paan Palace Project
 
 Paan Palace is a full-stack e-commerce style project for selling and managing paan.  
@@ -24,6 +23,4 @@ react-admin/       # Admin panel built with React
 - **Backend:** `cd paan-backend && mvnw spring-boot:run` (or `mvn spring-boot:run`)  
 - **User Interface:** Open `index.html` in browser or run `npx serve .` inside the folder  
 - **React Admin:** `cd react-admin && npm install && npm start`
-"@
 
-$readme | Out-File -Encoding UTF8 README.md
